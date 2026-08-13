@@ -17,29 +17,63 @@ namespace pryEjercicio3ED
             InitializeComponent();
         }
 
-        clsDeuda objDeuda = new clsDeuda();
+        clsCliente objCliente = new clsCliente();
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            lblResultado.Text = objDeuda.Deuda.ToString();
+            lblResultado.Text = objCliente.Deuda.ToString();
         }
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            objDeuda.Comprar(Convert.ToDecimal(txtImporte.Text));
+            objCliente.Comprar(Convert.ToDecimal(txtImporte.Text));
 
             txtImporte.Clear();
 
-            lblResultado.Text = objDeuda.Deuda.ToString();
+            lblResultado.Text = objCliente.Deuda.ToString();
         }
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            objDeuda.Pagar(Convert.ToDecimal(txtImporte.Text));
+            objCliente.Pagar(Convert.ToDecimal(txtImporte.Text));
 
             txtImporte.Clear();
 
-            lblResultado.Text = objDeuda.Deuda.ToString();
+            lblResultado.Text = objCliente.Deuda.ToString();
+        }
+
+        private void lblImporte_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtImporte_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            objCliente.Codigo = Convert.ToInt32(txtCodigo.Text);
+            objCliente.Nombre = txtNombre.Text;
+            objCliente.Deuda = Convert.ToDecimal(txtDeuda.Text);
+
+            txtCodigo.Clear();
+            txtNombre.Clear();
+            txtDeuda.Clear();
+
+            lblResultadoMostrar.Text = objCliente.Codigo.ToString() + " - " + objCliente.Nombre + ": $" + objCliente.Deuda;
+            lblResultado.Text = objCliente.Deuda.ToString();
         }
     }
 }
